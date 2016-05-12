@@ -1,6 +1,7 @@
 (function () {
     'use strict';
     var semver = require('semver');
+    var jshint = require('simplebuild-jshint');
     desc("Default jake task");
     task("default", ["version","lint"], function () {
         console.log("\n\nBUILD OK");
@@ -16,7 +17,13 @@
         }
     });
     task("lint", function () {
-        jake.exec("node node_modules/jshint/bin/jshint jakefile.js",{interactive:true});
+        process.stdout.write("Javascript linting ");
+        jshint.checkFiles({
+           files:"jakefile.js",
+            options:{},
+            globals:{}
+        },complete,fail);
+        //jake.exec("node node_modules/jshint/bin/jshint jakefile.js",{interactive:true},complete);
     },{async:true});
 
 }());
