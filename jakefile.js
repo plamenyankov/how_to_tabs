@@ -1,3 +1,4 @@
+/* globals desc:false, task:false, fail:false, complete:false  */
 (function () {
     'use strict';
     var semver = require('semver');
@@ -8,7 +9,7 @@
     });
     desc("Checking Node version");
     task("version", function () {
-        console.log("Cheking Node version");
+        console.log("Checking Node version");
         var expectedVersion = require('./package.json').engines.node;
 
         var actualVersion = process.version;
@@ -20,7 +21,22 @@
         process.stdout.write("Javascript linting ");
         jshint.checkFiles({
            files:"jakefile.js",
-            options:{},
+            options:{
+                bitwise:true,
+                eqeqeq:true,
+                forin:true,
+                freeze:true,
+                futurehostile:true,
+                latedef:"nofunc",
+                noarg:true,
+                nocomma:true,
+                nonbsp:true,
+                nonew:true,
+                strict:true,
+                undef:true,
+                node:true,
+                browser:true
+            },
             globals:{}
         },complete,fail);
         //jake.exec("node node_modules/jshint/bin/jshint jakefile.js",{interactive:true},complete);
