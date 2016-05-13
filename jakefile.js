@@ -28,7 +28,7 @@
     task("lint", function () {
         process.stdout.write("Javascript linting ");
         jshint.checkFiles({
-           files:"jakefile.js",
+           files:["jakefile.js","./src/**/*.js"],
             options:{
                 bitwise:true,
                 eqeqeq:true,
