@@ -45,7 +45,15 @@
                 node:true,
                 browser:true
             },
-            globals:{}
+            globals:{
+                //Mocha
+                describe:false,
+                it:false,
+                before:false,
+                after:false,
+                beforeEach:false,
+                afterEach:false
+            }
         },complete,fail);
         //jake.exec("node node_modules/jshint/bin/jshint jakefile.js",{interactive:true},complete);
     },{async:true});
