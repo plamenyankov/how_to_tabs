@@ -85,7 +85,8 @@
     function expectedBrowsers(){
         return [
             "Chrome 50.0.2661 (Windows 10 0.0.0)",
-            "Firefox 46.0.0 (Windows 10 0.0.0)"
+            "Firefox 46.0.0 (Windows 10 0.0.0)",
+            "Safari 5.1.7 (Windows 8 0.0.0)"
         ];
     }
 }());
