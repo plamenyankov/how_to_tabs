@@ -1,5 +1,6 @@
 # webstorm
 .idea/workspace.xml
-
+# generated files
+generated/
 # npm
 node_modules/**/.bin/
