@@ -1,4 +1,4 @@
-/* globals desc:false, task:false, fail:false, complete:false, jake:false  */
+/* globals directory:false, desc:false, task:false, fail:false, complete:false, jake:false  */
 (function () {
     'use strict';
     var semver = require('semver');
@@ -39,11 +39,10 @@
     task("lint", function () {
         process.stdout.write("Javascript linting ");
         jshint.checkFiles({
-            files: ["jakefile.js", "./src/**/*.js"],
+            files: ["jakefile.js", "./src/javascript/**/*.js"],
             options: lintOpt(),
             globals: lintGlobals()
         }, complete, fail);
-        //jake.exec("node node_modules/jshint/bin/jshint jakefile.js",{interactive:true},complete);
     }, {async: true});
     desc("Run test");
     task("test", function () {
@@ -57,8 +56,9 @@
     task("build",[DIST_DIR],function(){
        console.log("Build");
         shell.rm("-rf",DIST_DIR+"/*");
-        shell.cp("src/index.html",DIST_DIR);
-    });
+        shell.cp("src/content/*",DIST_DIR);
+        jake.exec("node node_modules/browserify/bin/cmd.js src/javascript/app.js -o "+DIST_DIR+"/bundle.js",{interactive:true},complete);
+    },{async:true});
     desc("Erase all build files");
     task("clean",function(){
        console.log("Erase Build files");
