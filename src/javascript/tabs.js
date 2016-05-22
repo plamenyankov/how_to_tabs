@@ -1,7 +1,9 @@
 (function(){
     "use strict";
-    exports.initialize = function initialize(el){
-    el.style.display ="none";
+    var classList = require("../vendors/classList.js");
+    classList.shim();
+    exports.initialize = function initialize(el,elClass){
+        el.classList.add(elClass);
     };
 
 }());
