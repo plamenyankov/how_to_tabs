@@ -98,15 +98,15 @@
     }
     function expectedBrowsers(){
         return [
-            "Chrome 50.0.2661 (Windows 10 0.0.0)",
-            "Firefox 46.0.0 (Windows 10 0.0.0)",
-            "Safari 5.1.7 (Windows 8 0.0.0)",
-            "Mobile Safari 9.0.0 (iOS 9.0.0)",
-            "Edge 13.10586.0 (Windows 10 0.0.0)",
-            "IE 11.0.0 (Windows 7 0.0.0)",
-            "IE 10.0.0 (Windows 7 0.0.0)",
-            "IE 9.0.0 (Windows 7 0.0.0)",
-            "Opera 37.0.2178 (Windows 10 0.0.0)"
+            "Chrome 50.0.2661 (Windows 10 0.0.0)"
+            //"Firefox 46.0.0 (Windows 10 0.0.0)",
+            //"Safari 5.1.7 (Windows 8 0.0.0)",
+            //"Mobile Safari 9.0.0 (iOS 9.0.0)",
+            //"Edge 13.10586.0 (Windows 10 0.0.0)",
+            //"IE 11.0.0 (Windows 7 0.0.0)",
+            //"IE 10.0.0 (Windows 7 0.0.0)",
+            //"IE 9.0.0 (Windows 7 0.0.0)",
+            //"Opera 37.0.2178 (Windows 10 0.0.0)"
         ];
     }
 }());
