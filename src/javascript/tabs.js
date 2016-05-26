@@ -5,15 +5,15 @@
     exports.initialize = function initialize(options) {
         var tabs = options.tabs;
         var content = options.content;
-        var className = options.contentHideClass;
-        var defaultTab = options.default;
+        var className = options.hiddenContentClass;
+        var defaultTab = options.defaultTab;
         var activeTabClass = options.activeTabClass;
 
         if (tabs === undefined) throw new Error("Expected options.tabs");
         if (activeTabClass === undefined) throw new Error("Expected options.activeTabClass");
         if (content === undefined) throw new Error("Expected options.content");
-        if (className === undefined) throw new Error("Expected options.contentHideClass");
-        if (defaultTab === undefined) throw new Error("Expected options.default");
+        if (className === undefined) throw new Error("Expected options.hiddenContentClass");
+        if (defaultTab === undefined) throw new Error("Expected options.defaultTab");
 
         var activeIndex = findIndexOfDefaultElement(tabs, defaultTab);
         var defaultContent = content[activeIndex];
