@@ -3,33 +3,52 @@
     var classList = require("../vendors/classList.js");
     classList.shim();
     exports.initialize = function initialize(options) {
-        var tabs = options.tabs;
-        var content = options.content;
-        var className = options.hiddenContentClass;
-        var defaultTab = options.defaultTab;
-        var activeTabClass = options.activeTabClass;
 
-        if (tabs === undefined) throw new Error("Expected options.tabs");
-        if (activeTabClass === undefined) throw new Error("Expected options.activeTabClass");
-        if (content === undefined) throw new Error("Expected options.content");
-        if (className === undefined) throw new Error("Expected options.hiddenContentClass");
-        if (defaultTab === undefined) throw new Error("Expected options.defaultTab");
+        checkOption(options.tabs, "options.tab");
+        checkOption(options.activeTabClass, "options.activeTabClass");
+        checkOption(options.content, "options.content");
+        checkOption(options.hiddenContentClass, "options.hiddenContentClass");
+        checkOption(options.defaultTab, "options.defaultTab");
 
-        var activeIndex = findIndexOfDefaultElement(tabs, defaultTab);
-        var defaultContent = content[activeIndex];
+        showTab(options.defaultTab, options);
+        handleClicks(options);
 
-        content.forEach(function (element) {
-            element.classList.add(className);
-        });
-        defaultContent.classList.remove(className);
-
-        defaultTab.classList.add(activeTabClass);
     };
-    function findIndexOfDefaultElement(contentTabs, defaultTab) {
+    function handleClicks(options){
+        options.tabs.forEach(function(tabElement){
+
+            tabElement.addEventListener("click", function (event) {
+
+                showTab(tabElement, options);
+            });
+        });
+    }
+    function checkOption(option, name) {
+        if (option === undefined) throw new Error("Expected " + name);
+    }
+
+    function showTab(defaultTab, options) {
+
+        var activeIndex = findIndex(options.tabs, defaultTab);
+        var defaultContent = options.content[activeIndex];
+
+        options.content.forEach(function (element) {
+            element.classList.add(options.hiddenContentClass);
+        });
+        defaultContent.classList.remove(options.hiddenContentClass);
+
+        options.tabs.forEach(function (element) {
+            element.classList.remove(options.activeTabClass);
+        });
+
+        defaultTab.classList.add(options.activeTabClass);
+    }
+
+    function findIndex(contentTabs, defaultTab) {
         for (var i = 0; i < contentTabs.length; i++) {
             if (contentTabs[i] === defaultTab) return i;
         }
-        throw new Error("Could not find default in list");
+        throw new Error("Could not find tab to show: "+defaultTab.outerHTML);
     }
 
 }());
